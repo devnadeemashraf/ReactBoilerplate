@@ -1,11 +1,10 @@
-import React from "react";
+import { useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
-type TProtectedProps = {
-  children: React.ReactNode;
-};
+const ProtectedRoute = () => {
+  const [authenticated, setAuthenticated] = useState(false);
 
-const ProtectedRoute = ({ children }: TProtectedProps) => {
-  return children;
+  return authenticated ? <Outlet /> : <Navigate to="/auth" />;
 };
 
 export default ProtectedRoute;
